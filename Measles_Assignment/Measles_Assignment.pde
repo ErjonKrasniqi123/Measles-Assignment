@@ -1,5 +1,5 @@
 //Global Variables
-float xFace, yFace, widthDiameterFace, heightDiameterFace, faceRadius, xCenter, yCenter, smallerDimension;
+float xFace, yFace, widthDiameterFace, heightDiameterFace, faceRadius, xCenter, smallerDimension;
 float xLeftEye, yLeftEye, xRightEye, yRightEye, eyeDiameter;
 float xNoseBridge, yNoseBridge, xLeftNostril, yLeftNostril, xRightNostril, yRightNostril;
 float xLeftMouth, yLeftMouth, xRightMouth, yRightMouth;
@@ -16,7 +16,7 @@ void setup()
   //
   //Population
   xCenter = width/2;
-  yCenter = height/2;
+  float yCenter = height/2;
   xFace = xCenter;
   yFace = yCenter;
   if ( width >= height ) {
@@ -45,6 +45,7 @@ void setup()
   //
   backgroundColour = ( nightMode==true ) ? color( random(255), random(255), 0 ) : color( random(255), random(255), random(255) ) ; //ternary operator, similar to IF-Else
   background( backgroundColour );
+  rect(xCenter-faceRadius, 0, 2*faceRadius, smallerDimension );//See X&Y Measles Random Postioning
   ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
   //
 }//End setup
@@ -59,8 +60,9 @@ void draw()
   line(xLeftMouth, yLeftMouth, xRightMouth, yRightMouth);
   strokeWeight(1); //resets default
   //
-  xMeasle = random();
-  yMeasle = random (); //if zero is first, then default
+  xMeasle = random (xCenter-faceRadius, xCenter+faceRadius);
+  yMeasle = random(smallerDimension ); //if zero is first, then default
+  //rect(xCenter-faceRadius, 0, 2*faceRadius, smallerDimension );//working rect() is before FACE in setup()
   fill(red);
   noStroke();
   measleDiameter = random(smallerDimension*1/75, smallerDimension*1/25); //smallerDimension*1/50;
