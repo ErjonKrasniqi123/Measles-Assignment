@@ -60,8 +60,8 @@ void draw()
   line(xLeftMouth, yLeftMouth, xRightMouth, yRightMouth);
   strokeWeight(1); //resets default
   //
-  xMeasle = random(xCenter-faceRadius, xCenter+faceRadius);
-  yMeasle = random(smallerDimension); //if zero is first, then default
+  xMeasle = random((widthDiameterFace/2) * 22/7 *2);
+  yMeasle = random((heightDiameterFace/2) * 22/7 * 2); //if zero is first, then default
   //rect(xCenter-faceRadius, 0, 2*faceRadius, smallerDimension); //working rect() is before FACE in setup()
   fill(red);
   noStroke();
