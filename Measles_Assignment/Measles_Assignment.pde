@@ -20,6 +20,7 @@ String title2 = "Stop";
 float titleX2, titleY2, titleWidth2, titleHeight2;
 int titleSize2;
 PFont titleFont2;
+Boolean measlesOn=true;
 //
 void setup()
 {
@@ -119,8 +120,8 @@ void draw()
   line(xLeftMouth, yLeftMouth, xRightMouth, yRightMouth);
   strokeWeight(1); //resets default
   //
-  xMeasle = random(xCenter-faceRadius, xCenter+faceRadius);
-  yMeasle = random(smallerDimension); //if zero is first, then default
+  if ( measlesOn=true )xMeasle = random(xCenter-faceRadius, xCenter+faceRadius);
+  if ( measlesOn=true )yMeasle = random(smallerDimension); //if zero is first, then default
   if (dist(xCenter, yCenter, xMeasle,  yMeasle)>faceRadius){fill(backgroundColour);}
   else{
     fill(red);
@@ -212,7 +213,13 @@ void mousePressed() {
    ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
    */
     if ( mouseX>quitButtonX1 && mouseX<quitButtonX1+quitButtonWidth1 && mouseY>quitButtonY1 && mouseY<quitButtonY1+quitButtonHeight1 ) exit();
-    if ( mouseX>stopButtonX1 && mouseX<stopButtonX1+stopButtonWidth1 && mouseY>stopButtonY1 && mouseY<stopButtonY1+stopButtonHeight1 ) noLoop();
+    if ( mouseX>stopButtonX1 && mouseX<stopButtonX1+stopButtonWidth1 && mouseY>stopButtonY1 && mouseY<stopButtonY1+stopButtonHeight1 ) 
+    if ( measlesOn==true ) {
+      rectON=false;
+    } else {
+      rectON=true;
+    }
+  }//End Button1
 }//End mousePressed
 //
 //End MAIN Program
