@@ -1,5 +1,5 @@
 //Global Variables
-float xFace, yFace, widthDiameterFace, heightDiameterFace, faceRadius, xCenter, smallerDimension;
+float xFace, yFace, widthDiameterFace, heightDiameterFace, faceRadius, xCenter, yCenter, smallerDimension;
 float xLeftEye, yLeftEye, xRightEye, yRightEye, eyeDiameter;
 float xNoseBridge, yNoseBridge, xLeftNostril, yLeftNostril, xRightNostril, yRightNostril;
 float xLeftMouth, yLeftMouth, xRightMouth, yRightMouth;
@@ -118,6 +118,10 @@ void draw()
   //
   xMeasle = random(xCenter-faceRadius, xCenter+faceRadius);
   yMeasle = random(smallerDimension); //if zero is first, then default
+  if (dist(xCenter, yCenter, xMeasle,  yMeasle)>faceRadius){fill(backgroundColour);}
+  else{
+    fill(red);
+  }
   //rect(xCenter-faceRadius, 0, 2*faceRadius, smallerDimension); //working rect() is before FACE in setup()
   fill(red);
   noStroke();
