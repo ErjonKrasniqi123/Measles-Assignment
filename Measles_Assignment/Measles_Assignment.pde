@@ -114,7 +114,7 @@ void setup()
   //
   pic1 = loadImage("566-5664547_scarf-clip-art.png"); //Dimensions: width 452, height 536
   pic2 = loadImage("R.png"); //Dimensions: width 1285, height 988
-  pic3= loadImage("clipart-clothes-icon-9.png"); //Dimensions: width 1235, height 988
+  pic3= loadImage("clipart-clothes-icon-9.png"); //Dimensions: width 1235 height 988
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
   //Alogrithm: Find the larger dimension for aspect ration (comparison of two numbers)
   int picWidth1 = 452; 
@@ -199,10 +199,10 @@ void setup()
   imageY2 = height/1.5;
   imageWidth2 = width/3; 
   imageHeight2 = height/5;
-  imageX3=width/15;
-  imageY3 = height/450;
-  imageWidth3 = width/1.09; 
-  imageHeight3 = height/3;
+  imageX3=width/65;
+  imageY3 = height/15000;
+  imageWidth3 = width; 
+  imageHeight3 = height/2;
   //
   //Combination of Population of Image with Population of Rect()
   //Ajusted Image Variables for Apect Ratio: entire image will be smaller due to aspect ratio
