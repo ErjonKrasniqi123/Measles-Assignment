@@ -63,6 +63,7 @@ void setup()
   strokeWeight(thack);
   line(xLeftMouth, yLeftMouth, xRightMouth, yRightMouth);
   strokeWeight(1); //resets default
+
   //
   quitButtonX1 = 0;
   quitButtonY1 = 0;
