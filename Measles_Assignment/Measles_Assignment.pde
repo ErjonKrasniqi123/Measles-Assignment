@@ -2,7 +2,6 @@
 float xFace, yFace, widthDiameterFace, heightDiameterFace, faceRadius, xCenter, yCenter, smallerDimension;
 float xLeftEye, yLeftEye, xRightEye, yRightEye, eyeDiameter;
 float xNoseBridge, yNoseBridge, xLeftNostril, yLeftNostril, xRightNostril, yRightNostril;
-float xLeftMouth, yLeftMouth, xRightMouth, yRightMouth;
 int thack=50;
 float xMeasle, yMeasle, measleDiameter;
 color resetWhite=#FFFFFF, red=#FF0000; //similar to int declaration
@@ -21,7 +20,18 @@ float titleX2, titleY2, titleWidth2, titleHeight2;
 int titleSize2;
 PFont titleFont2;
 Boolean measlesOn=false;
+PImage pic1, pic2, pic3;
+float imageX1, imageY1, imageWidth1, imageHeight1, imageLargerDimension1, imageSmallerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
+float picWidthAdjusted1, picHeightAdjusted1;
+float imageX2, imageY2, imageWidth2, imageHeight2, imageLargerDimension2, imageSmallerDimension2, imageWidthRatio2=0.0, imageHeightRatio2=0.0;
+float picWidthAdjusted2, picHeightAdjusted2;
+float imageX3, imageY3, imageWidth3, imageHeight3, imageLargerDimension3, imageSmallerDimension3, imageWidthRatio3=0.0, imageHeightRatio3=0.0;
+float picWidthAdjusted3, picHeightAdjusted3;
+Boolean widthLarger1=false, heightLarger1=false;
+Boolean widthLarger2=false, heightLarger2=false;
+Boolean widthLarger3=false, heightLarger3=false;
 //
+
 void setup()
 {
   //CANVAS will will be added to later
@@ -50,10 +60,6 @@ void setup()
   yLeftNostril = yCenter+smallerDimension*1/8;
   xRightNostril = xCenter+smallerDimension*1/8;
   yRightNostril = yLeftNostril;
-  xLeftMouth = xLeftEye;
-  yLeftMouth = yCenter+smallerDimension*1/4;
-  xRightMouth = xRightEye;
-  yRightMouth = yLeftMouth;
   faceRadius = smallerDimension/2;
   //
   backgroundColour = ( nightMode==true ) ? color( random(255), random(255), 0 ) : color( random(255), random(255), random(255) ) ; //ternary operator, similar to IF-Else
@@ -65,7 +71,6 @@ void setup()
   triangle(xNoseBridge, yNoseBridge, xLeftNostril, yLeftNostril, xRightNostril, yRightNostril);
   strokeCap(SQUARE); //ROUND (default), PROJECT
   strokeWeight(thack);
-  line(xLeftMouth, yLeftMouth, xRightMouth, yRightMouth);
   strokeWeight(1); //resets default
   //
   quitButtonX1 = width*0;
@@ -89,12 +94,12 @@ void setup()
   rect(titleX1, titleY1, titleWidth1, titleHeight1);
   //
   stopButtonX1=width*0;
-  stopButtonY1=height/6;
+  stopButtonY1=height/2;
   stopButtonWidth1=height/10;
   stopButtonHeight1=width/6;
    //
   titleX2 = width*0;
-  titleY2 = height/6;
+  titleY2 = height/2;
   titleWidth2 = height/10;
   titleHeight2 = width/6;
   //
@@ -107,7 +112,111 @@ void setup()
   //Layout our text space and typographical features
   rect(titleX2, titleY2, titleWidth2, titleHeight2);
   //
-  
+  pic1 = loadImage("566-5664547_scarf-clip-art.png"); //Dimensions: width 452, height 536
+  pic2 = loadImage("R.png"); //Dimensions: width 1285, height 988
+  pic3= loadImage("clipart-clothes-icon-9.png"); //Dimensions: width 1235, height 988
+  //Note: Dimensions are found in the image file / Right Click / Properties / Details
+  //Alogrithm: Find the larger dimension for aspect ration (comparison of two numbers)
+  int picWidth1 = 452; 
+  int picHeight1 = 536; 
+  int picWidth2 = 1285; 
+  int picHeight2 = 988; 
+  int picWidth3 = 1235; 
+  int picHeight3 = 988; 
+  //
+  if ( picWidth1 >= picHeight1 ) { //Image Dimension Comparison
+    //True if Landscape or Square
+    imageLargerDimension1 = picWidth1;
+    imageSmallerDimension1 = picHeight1;
+    widthLarger1 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension1 = picHeight1;
+    imageSmallerDimension1 = picWidth1;
+    heightLarger1 = true;
+  }//End Image Dimension Comparison
+  println(imageSmallerDimension1, imageLargerDimension1, widthLarger1, heightLarger1); //Verify variables details
+  //Aspect Ratio
+  //Note: single line IFs can be summarized into IF-ELSE or IF-ElseIF-Else
+  //Computer chooses which formulae to execute
+  if ( widthLarger1 == true ) imageWidthRatio1 = imageLargerDimension1 / imageLargerDimension1;
+  if ( widthLarger1 == true ) imageHeightRatio1 = imageSmallerDimension1 / imageLargerDimension1;
+  if ( heightLarger1 == true ) imageWidthRatio1 = imageSmallerDimension1 / imageLargerDimension1;
+  if ( heightLarger1 == true ) imageHeightRatio1 = imageLargerDimension1 / imageLargerDimension1;
+  //Note:
+  //Answers must be 1.0 and between 0 & 1 (decimal)
+  //Ratio 1.0 similar to style="width:100%" (websites)
+  //Ratio of 0-1 similar to style="height:auto" (websites)
+  if ( picWidth2 >= picHeight2 ) { //Image Dimension Comparison
+    //True if Landscape or Square
+    imageLargerDimension2 = picWidth2;
+    imageSmallerDimension2 = picHeight2;
+    widthLarger2 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension2 = picHeight2;
+    imageSmallerDimension2 = picWidth2;
+    heightLarger2 = true;
+  }//End Image Dimension Comparison
+  println(imageSmallerDimension2, imageLargerDimension2, widthLarger2, heightLarger2); //Verify variables details
+  //Aspect Ratio
+  //Note: single line IFs can be summarized into IF-ELSE or IF-ElseIF-Else
+  //Computer chooses which formulae to execute
+  if ( widthLarger2 == true ) imageWidthRatio2 = imageLargerDimension2 / imageLargerDimension2;
+  if ( widthLarger2 == true ) imageHeightRatio2 = imageSmallerDimension2 / imageLargerDimension2;
+  if ( heightLarger2 == true ) imageWidthRatio2 = imageSmallerDimension2 / imageLargerDimension2;
+  if ( heightLarger2 == true ) imageHeightRatio2 = imageLargerDimension2 / imageLargerDimension2;
+  //
+   if ( picWidth3 >= picHeight3 ) { //Image Dimension Comparison
+    //True if Landscape or Square
+    imageLargerDimension3 = picWidth3;
+    imageSmallerDimension3 = picHeight3;
+    widthLarger3 = true;
+  } else {
+    //False if Portrait
+    imageLargerDimension3 = picHeight3;
+    imageSmallerDimension3 = picWidth3;
+    heightLarger1 = true;
+  }//End Image Dimension Comparison
+  println(imageSmallerDimension3, imageLargerDimension3, widthLarger3, heightLarger3); //Verify variables details
+  //Aspect Ratio
+  //Note: single line IFs can be summarized into IF-ELSE or IF-ElseIF-Else
+  //Computer chooses which formulae to execute
+  if ( widthLarger3== true ) imageWidthRatio3 = imageLargerDimension3 / imageLargerDimension3;
+  if ( widthLarger3== true ) imageHeightRatio3 = imageSmallerDimension3 / imageLargerDimension3;
+  if ( heightLarger3== true ) imageWidthRatio3 = imageSmallerDimension3 / imageLargerDimension3;
+  if ( heightLarger3 == true ) imageHeightRatio3 = imageLargerDimension3 / imageLargerDimension3;
+  //Note:
+  //Answers must be 1.0 and between 0 & 1 (decimal)
+  //Ratio 1.0 similar to style="width:100%" (websites)
+  //Ratio of 0-1 similar to style="height:auto" (websites)
+  //Population of Rect()
+  imageX1 = width*1/25;
+  imageY1 = height*1/1.8;
+  imageWidth1= width*1.2;
+  imageHeight1=height*1.8;
+  imageX2=width/3;
+  imageY2 = height/1.5;
+  imageWidth2 = width/3; 
+  imageHeight2 = height/5;
+  imageX3=width/15;
+  imageY3 = height/450;
+  imageWidth3 = width/1.09; 
+  imageHeight3 = height/3;
+  //
+  //Combination of Population of Image with Population of Rect()
+  //Ajusted Image Variables for Apect Ratio: entire image will be smaller due to aspect ratio
+  picWidthAdjusted1 = imageWidth1 * imageWidthRatio1;
+  picHeightAdjusted1 = imageHeight1 * imageHeightRatio1;
+  println(imageX1, imageY1, picWidthAdjusted1, picHeightAdjusted1); //Note: println() also verifies decimal places, complier will truncate
+  picWidthAdjusted2 = imageWidth2 * imageWidthRatio2;
+  picHeightAdjusted2 = imageHeight2 ; //* imageHeightRatio2
+  println(imageX2, imageY2, picWidthAdjusted2, picHeightAdjusted2); //Note: println() also verifies decimal places, complier will truncate
+  picWidthAdjusted3 = imageWidth3 * imageWidthRatio3;
+  picHeightAdjusted3 = imageHeight3 ; //* imageHeightRatio2
+  println(imageX3, imageY3, picWidthAdjusted3, picHeightAdjusted3); //Note: println() also verifies decimal places, complier will truncate
+  //
+  //
 }//End setup
 //
 void draw()
@@ -117,7 +226,6 @@ void draw()
   triangle(xNoseBridge, yNoseBridge, xLeftNostril, yLeftNostril, xRightNostril, yRightNostril);
   strokeCap(SQUARE); //ROUND (default), PROJECT
   strokeWeight(thack);
-  line(xLeftMouth, yLeftMouth, xRightMouth, yRightMouth);
   strokeWeight(1); //resets default
   //
   if ( measlesOn=true )xMeasle = random(xCenter-faceRadius, xCenter+faceRadius);
@@ -178,6 +286,9 @@ void draw()
   text(title2, titleX2, titleY2, titleWidth2, titleHeight2);
   fill(resetDefaultInk);
   //
+  image(pic1, imageX1, imageY1, picWidthAdjusted1, picHeightAdjusted1);
+  image(pic2, imageX2, imageY2, picWidthAdjusted2, picHeightAdjusted2);
+  image(pic3, imageX3, imageY3, picWidthAdjusted3, picHeightAdjusted3);
 }//End draw
 //
 void keyPressed() {
