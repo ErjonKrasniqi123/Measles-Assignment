@@ -59,20 +59,23 @@ void setup()
   background( backgroundColour );
   rect(xCenter-faceRadius, 0, 2*faceRadius, smallerDimension); //See X&Y Measles Random Postioning
   ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
+  ellipse(xLeftEye, yLeftEye, eyeDiameter, eyeDiameter);
+  ellipse(xRightEye, yRightEye, eyeDiameter, eyeDiameter);
+  triangle(xNoseBridge, yNoseBridge, xLeftNostril, yLeftNostril, xRightNostril, yRightNostril);
   strokeCap(SQUARE); //ROUND (default), PROJECT
   strokeWeight(thack);
   line(xLeftMouth, yLeftMouth, xRightMouth, yRightMouth);
   strokeWeight(1); //resets default
   //
-  quitButtonX1 = 0;
-  quitButtonY1 = 0;
-  quitButtonWidth1 = 80;
-  quitButtonHeight1 = 80;
+  quitButtonX1 = width*0;
+  quitButtonY1 = height*0;
+  quitButtonWidth1 = height/10;
+  quitButtonHeight1 = width/20;
   //
-  titleX1 = 0;
-  titleY1 = 0;
-  titleWidth1 = 80;
-  titleHeight1 = 80;
+  titleX1 = width*0;
+  titleY1 = height*0;
+  titleWidth1 = height/10;
+  titleHeight1 = width/20;
   //
   //Single Executed Code
   //Fonts from OS (Operating System)
@@ -84,15 +87,15 @@ void setup()
   //Layout our text space and typographical features
   rect(titleX1, titleY1, titleWidth1, titleHeight1);
   //
-  stopButtonX1=0;
-  stopButtonY1=100;
-  stopButtonWidth1=80;
-  stopButtonHeight1=80;
+  stopButtonX1=width*0;
+  stopButtonY1=height/6;
+  stopButtonWidth1=height/10;
+  stopButtonHeight1=width/6;
    //
-  titleX2 = 0;
-  titleY2 = 100;
-  titleWidth2 = 80;
-  titleHeight2 = 80;
+  titleX2 = width*0;
+  titleY2 = height/6;
+  titleWidth2 = height/10;
+  titleHeight2 = width/6;
   //
   //Single Executed Code
   //Fonts from OS (Operating System)
